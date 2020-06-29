@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "EZChannel", "EZChannel.pyproj", "{D73DE278-9885-44F4-8C0E-4CF9E8AC4147}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D73DE278-9885-44F4-8C0E-4CF9E8AC4147}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D73DE278-9885-44F4-8C0E-4CF9E8AC4147}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {83B4B549-C418-434E-B7AC-CDE9864A5A74}
+	EndGlobalSection
+EndGlobal
