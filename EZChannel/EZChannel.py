@@ -1,18 +1,29 @@
 import discord
 from discord.ext import commands
-x = 1
+
 client = commands.Bot(command_prefix = 'ez-')
+
+
 
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
+    await client.change_presence(status=discord.Status.online, activity=discord.Game('ez-info'))
+
+
+@client.command()
+async def info(ctx):
+    await ctx.send(f'Pong! {round(client.latency * 1000)}ms')
+    
+
+    
+    
 
 @client.command()
 async def ping(ctx):
     await ctx.send(f'Pong! {round(client.latency * 1000)}ms')
-    while (x < 1000):
-        await ctx.send('test')
-        x+1
+ 
+      
 
 @client.command()
 async def purge(ctx, amount=500000000000000000000000000000000000000000000000):
