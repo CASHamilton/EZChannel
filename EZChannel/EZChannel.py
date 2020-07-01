@@ -1,16 +1,18 @@
 import discord
 import random
+from datetime import datetime
 from discord.ext import commands
-
-client = commands.Bot(command_prefix = 'ez-')
+############################################Case_insensitive MASSIVELY REDUCES PERFORMANCE ||| line 5
+client = commands.Bot(command_prefix = 'ez-', case_insensitive=True)
 
 
 
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
-    await client.change_presence(status=discord.Status.online, activity=discord.Game('ez-help'))
-
+    await client.change_presence(status=discord.Status.online, activity=discord.Game('ez-help')) #Set status
+    now = datetime.now().time() # time object
+    print("now =", now,)
 
 @client.command()
 async def fortniteroulette(ctx):
@@ -30,30 +32,24 @@ async def roulette(ctx):
     """Good ol' Russian Roulette"""
     outcomes=['Death','Coma','Lost Limbs','Winner']
     await ctx.send({random.choice(outcomes)})
-    
-    
-    
-    
-
+           
 @client.command()
 async def ping(ctx):
     """Shows latency in Miliseconds"""
     await ctx.send(f'Pong! {round(client.latency * 1000)}ms')
  
-      
-
 @client.command()
 async def purge(ctx, amount=500000000000000000000000000000000000000000000000):
     """Purges channel of messages. examples|| ez-purge, ez-purge 5"""
     await ctx.channel.purge(limit=amount)
 
 
-
-
+#Examples
 #region    
 # @client.command(aliases=['8ball'])
 # async def _8ball(ctx, *, question):
 #    responses = []
-#endregion
+#endregion 
+
 
 client.run('NzI2NTMwOTcwNDU0NTg5NDcx.Xvex2A.JtXdTNKylGCZpkNeKZcqq320pBM')
