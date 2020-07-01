@@ -4,7 +4,7 @@ from datetime import datetime
 from discord.ext import commands
 ############################################Case_insensitive MASSIVELY REDUCES PERFORMANCE ||| line 5
 client = commands.Bot(command_prefix = 'ez-', case_insensitive=True)
-
+modeenabled = 0
 
 
 @client.event
@@ -13,6 +13,28 @@ async def on_ready():
     await client.change_presence(status=discord.Status.online, activity=discord.Game('ez-help')) #Set status
     now = datetime.now().time() # time object
     print("now =", now,)
+
+@client.command()
+async def devmode(ctx):
+    """Enables Dev Mode"""
+    global modeenabled
+    if (modeenabled == 0):
+        modeenabled = 1
+        await ctx.send('Dev Mode On')
+    else:
+        modeenabled = 0
+        await ctx.send('Dev Mode Off')
+
+@client.command()
+async def consoleping(ctx):
+       
+    """Pings developer console"""
+    global modeenabled
+    if (modeenabled == 1):
+        print (f'Pong! {round(client.latency * 1000)}ms')
+        await ctx.send ('Console Pinged')
+    else:
+        await ctx.send ('Enable Dev Mode with ez-devmode')
 
 @client.command()
 async def fortniteroulette(ctx):
