@@ -24,7 +24,7 @@ async def breakfast(ctx):
 @client.command()
 async def google(ctx, *, searchquery: str):
     '''
-    Google anything. (Big thanks to the GitHub user AlexApps99 for this script!)
+    Google anything. (Big thanks to the GitHub user AlexApps99 for this awesome and funny script!)
     '''
     await ctx.send('<https://lmgtfy.com/?iie=1&q={}>'
                    .format(urllib.parse.quote_plus(searchquery)))
