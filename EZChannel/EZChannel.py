@@ -1,4 +1,5 @@
 import discord
+import urllib.parse
 import random
 from datetime import datetime
 from discord.ext import commands
@@ -13,6 +14,20 @@ async def on_ready():
     await client.change_presence(status=discord.Status.online, activity=discord.Game('ez-help')) #Set status
     now = datetime.now().time() # time object
     print("now =", now,)
+
+@client.command()
+async def breakfast(ctx):
+    """Shows you what to eat for breakfast"""
+    eat = ['waffels','panckakes','avacado toast', 'eggs','cereal','yogurt','Oatmeal/Poridge','berries']
+    await ctx.send ('Eat some'); await ctx.send ({random.choice(eat)})
+
+@client.command()
+async def google(ctx, *, searchquery: str):
+    '''
+    Google anything. (Big thanks to the GitHub user AlexApps99 for this script!)
+    '''
+    await ctx.send('<https://lmgtfy.com/?iie=1&q={}>'
+                   .format(urllib.parse.quote_plus(searchquery)))
 
 @client.command()
 async def devmode(ctx):
@@ -40,7 +55,7 @@ async def consoleping(ctx):
 async def fortniteroulette(ctx):
     """Gives a random drop spot and weapon"""
     location = ['PLEASENT_PARK','STEAMY_STACKS','SWEATY_SANDS','SALTY_SPRINGS','THE_AUTHORITY','FRENZY_FARM','HOLLY_HEDGES','LAZY_LAKE','RETAIL_ROW','THE_YACHT','THE_FORTILLA','RICKETY_RIG','MISTY_MEADOWS','CATTY_CORNER','A_RANDOM_HOUSE_IN_THE_MIDDLE_OF_NOWHERE']
-    weapon = ['AR','SHOTGUN','SMG','SNIPER','HARPOON','PISTOL']
+    weapon = ['AR','SHOTGUN','SMG','SNIPER','HARPOON','PISTOL','Pickaxe_Only']
     await ctx.send('Land at '); await ctx.send ({random.choice(location)})
     await ctx.send('\nYou can only use '); await ctx.send({random.choice(weapon)})
 
