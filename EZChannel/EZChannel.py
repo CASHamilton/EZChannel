@@ -88,4 +88,4 @@ async def purge(ctx, amount=500000000000000000000000000000000000000000000000):
 #endregion 
 
 
-client.run('NzI2NTMwOTcwNDU0NTg5NDcx.Xvex2A.JtXdTNKylGCZpkNeKZcqq320pBM')
+client.run('NzI2NTMwOTcwNDU0NTg5NDcx.Xv5yeQ.TkMnl0ZrwHqUkdRoaZCRpX4JycM')
