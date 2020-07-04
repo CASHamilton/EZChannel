@@ -8,6 +8,12 @@ client = commands.Bot(command_prefix = 'ez-', case_insensitive=True)
 modeenabled = 0
 
 
+f=open("Files/Bot_key.txt", "r")
+if f.mode == 'r':
+    key =f.read()
+    print(key)
+
+
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
@@ -129,4 +135,4 @@ async def purge(ctx, amount=500000000000000000000000000000000000000000000000):
 #endregion 
 
 
-client.run('NzI2NTMwOTcwNDU0NTg5NDcx.Xv5yeQ.TkMnl0ZrwHqUkdRoaZCRpX4JycM')
+client.run(key)
