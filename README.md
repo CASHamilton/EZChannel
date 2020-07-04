@@ -2,6 +2,7 @@
 
 To invite the bot to your server simply paste this link into your web browser:
 https://discord.com/api/oauth2/authorize?client_id=726530970454589471&permissions=11280&scope=bot
+## For instructions on the bot key go to files/READ THIS.txt
 _______________________________________________________________________________________________________________________________________________________________________________
 
 Commands: 
