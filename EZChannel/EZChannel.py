@@ -22,6 +22,11 @@ async def on_ready():
     print("now =", now,)
 
 @client.command()
+async def code(ctx):
+    """Shows a Github link to code"""
+    await ctx.send ('https://github.com/KeltontheConqueror/EZChannel')
+
+@client.command()
 async def breakfast(ctx):
     """Shows you what to eat for breakfast"""
     eat = ['waffels','panckakes','avacado toast', 'eggs','cereal','yogurt','Oatmeal/Poridge','berries']
@@ -79,45 +84,9 @@ async def roulette(ctx):
 async def ping(ctx):
     """Shows latency in Miliseconds"""
     await ctx.send(f'Pong! {round(client.latency * 1000)}ms')
+    
 
-@client.command()
-async def rockpaperscissors(ctx, message):
-    """Plays rock paper scissors"""
-    async def on_message(message):
-        
-        rps = ['Rock','Paper','Scissors']
-        await ctx.send ('please choose: rock, paper, or scissors (lower case please)')
-        if message.content.startswith('rock'):
-            userinput = ('rock')
-        elif message.content.startswith('paper'):
-            userinput = ('paper')
-        elif message.content.startswith('scissors'):
-            userinput - ('scissors')
-        else:
-            await ctx.send ('That is not a valid option. (Are you trying to Dynamite me???)')
-    global rps
-    global userinput
-    random.choice(rps)
-    print (rps) 
-    if userinput is rps:
-        ctx.send ('We chose the same')
-    elif rps == ('Rock') and userinput == ('paper'):
-        await ctx.send ('You beat me. I played Rock')
-    elif rps == ('Rock') and userinput == ('scissors'):
-        await ctx.send ('I beat you. I played Rock')
-    elif rps == ('Paper') and userinput == ('rock'):
-        await ctx.send ('I beat you. I played Paper')
-    elif rps == ('Paper') and userinput == ('scissors'):
-        await ctx.send ('You beat me. I played Paper')
-    elif rps == ('Scissors') and userinput == ('rock'):
-        await ctx.send ('You beat me. I played Scissors')
-    elif rps == ('Scissors') and userinput == ('paper'):
-        await ctx.send ('I beat you. I played Scissors')
-    else:
-        await ctx.send ('Uh oh. that was not supposed to happen. Please let Kelton the Conqueror know ASAP. \nSorry for the inconvenience')
-
-
-
+   
 
     
  
