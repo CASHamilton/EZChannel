@@ -13,6 +13,7 @@ if f.mode == 'r':
     key =f.read()
     print(key)
 
+   
 
 @client.event
 async def on_ready():
@@ -20,6 +21,16 @@ async def on_ready():
     await client.change_presence(status=discord.Status.online, activity=discord.Game('ez-help')) #Set status
     now = datetime.now().time() # time object
     print("now =", now,)
+
+@client.command()
+async def Register(ctx):
+    author = ctx.message.author
+    print (author)
+
+    registry= open('author', "w+")#I TXT FILE IS IN NORMAL AREA FIX ASAP.
+    registry.write('Test')
+    registry.close()
+
 
 @client.command()
 async def code(ctx):
@@ -83,7 +94,7 @@ async def roulette(ctx):
 @client.command()
 async def ping(ctx):
     """Shows latency in Miliseconds"""
-    await ctx.send(f'Pong! {round(client.latency * 1000)}ms')
+    await ctx.send(f'Pong! {round(client.latency * 1000)}ms')  
     
 
    
