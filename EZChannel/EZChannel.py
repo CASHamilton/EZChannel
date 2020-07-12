@@ -6,7 +6,7 @@ from discord.ext import commands
 ############################################Case_insensitive MASSIVELY REDUCES PERFORMANCE ||| line 5
 client = commands.Bot(command_prefix = 'ez-', case_insensitive=True)
 modeenabled = 0
-
+textts = False
 
 f=open("Files/Bot_key.txt", "r")
 if f.mode == 'r':
@@ -14,6 +14,8 @@ if f.mode == 'r':
     print(key)
 
    
+
+
 
 @client.event
 async def on_ready():
@@ -37,6 +39,18 @@ async def code(ctx):
     """Shows a Github link to code"""
     await ctx.send ('https://github.com/KeltontheConqueror/EZChannel')
 
+@client.command 
+async def tts(ctx):
+    global textts
+    if textts == False:
+        textts = True
+        await ctx.send('TTS mode enabled')
+    elif textts == True:
+        textts = False
+        await ctx.send('TTS mode disabled')
+    else:
+         await ctx.send('Error code 1 see (readme for details)')
+    
 @client.command()
 async def breakfast(ctx):
     """Shows you what to eat for breakfast"""
@@ -75,10 +89,15 @@ async def consoleping(ctx):
 @client.command()
 async def fortniteroulette(ctx):
     """Gives a random drop spot and weapon"""
+
     location = ['PLEASENT_PARK','STEAMY_STACKS','SWEATY_SANDS','SALTY_SPRINGS','THE_AUTHORITY','FRENZY_FARM','HOLLY_HEDGES','LAZY_LAKE','RETAIL_ROW','THE_YACHT','THE_FORTILLA','RICKETY_RIG','MISTY_MEADOWS','CATTY_CORNER','A_RANDOM_HOUSE_IN_THE_MIDDLE_OF_NOWHERE']
     weapon = ['AR','SHOTGUN','SMG','SNIPER','HARPOON','PISTOL','Pickaxe_Only']
-    await ctx.send('Land at '); await ctx.send ({random.choice(location)})
-    await ctx.send('\nYou can only use '); await ctx.send({random.choice(weapon)})
+    answers = ('Land at ', {random.choice(location)})
+    answers2 - ('You can only use ', {random.choice(weapon)})
+    await ctx.send (answers)
+    await ctx.send (answers2)
+    #await ctx.send('Land at '); await ctx.send ({random.choice(location)})
+    #await ctx.send('\nYou can only use '); await ctx.send({random.choice(weapon)})
 
 @client.command()
 async def pi(ctx):
@@ -104,7 +123,14 @@ async def ping(ctx):
 @client.command()
 async def purge(ctx, amount=500000000000000000000000000000000000000000000000):
     """Purges channel of messages. examples|| ez-purge, ez-purge 5"""
+    global textts
     await ctx.channel.purge(limit=amount)
+    if textts == False:
+        await ctx.send ('Channel purged. (use the command ez-tts to turn on voice notifications for this event)')
+    elif textts == True:
+        await ctx.send ('/tts Channel purged.')
+    else:
+        await ctx.send ('Error code 2 (See readme for details)')
 
 
 #Examples

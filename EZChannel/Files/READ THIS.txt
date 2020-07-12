@@ -1,1 +1,1 @@
-To make the bot work simply replace the client.run key variable with your key, or create Bot_key.txt and paste your key in there.
+To make the bot work simply replace the client.run key variable with your key, or create Bot_key.txt in this file path and paste your key in there.
