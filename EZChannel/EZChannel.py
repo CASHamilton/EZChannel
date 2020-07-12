@@ -24,6 +24,14 @@ async def on_ready():
     now = datetime.now().time() # time object
     print("now =", now,)
 
+@client.event
+async def on_guild_join(guild):
+    for channel in guild.text_channels:
+        if channel.permissions_for(guild.me).send_messages:
+            await channel.send('Hey there! this is the message i send when i join a server')
+        break
+
+
 @client.command()
 async def Register(ctx):
     author = ctx.message.author
@@ -34,13 +42,17 @@ async def Register(ctx):
     registry.close()
 
 
+
+
 @client.command()
 async def code(ctx):
     """Shows a Github link to code"""
     await ctx.send ('https://github.com/KeltontheConqueror/EZChannel')
 
-@client.command 
+@client.command() 
 async def tts(ctx):
+    """Makes bot respond with text-to-speech messages"""
+    print ("working")
     global textts
     if textts == False:
         textts = True
@@ -54,8 +66,8 @@ async def tts(ctx):
 @client.command()
 async def breakfast(ctx):
     """Shows you what to eat for breakfast"""
-    eat = ['waffels','panckakes','avacado toast', 'eggs','cereal','yogurt','Oatmeal/Poridge','berries']
-    await ctx.send ('Eat some'); await ctx.send ({random.choice(eat)})
+    eat = ['Waffels','Panckakes','Toast', 'Eggs','Cereal','Yogurt','Oatmeal/Poridge',]
+    await ctx.send ('Eat some'); await ctx.send (random.choice(eat))
 
 @client.command()
 async def search(ctx, *, searchquery: str):
@@ -92,12 +104,8 @@ async def fortniteroulette(ctx):
 
     location = ['PLEASENT_PARK','STEAMY_STACKS','SWEATY_SANDS','SALTY_SPRINGS','THE_AUTHORITY','FRENZY_FARM','HOLLY_HEDGES','LAZY_LAKE','RETAIL_ROW','THE_YACHT','THE_FORTILLA','RICKETY_RIG','MISTY_MEADOWS','CATTY_CORNER','A_RANDOM_HOUSE_IN_THE_MIDDLE_OF_NOWHERE']
     weapon = ['AR','SHOTGUN','SMG','SNIPER','HARPOON','PISTOL','Pickaxe_Only']
-    answers = ('Land at ', {random.choice(location)})
-    answers2 - ('You can only use ', {random.choice(weapon)})
-    await ctx.send (answers)
-    await ctx.send (answers2)
-    #await ctx.send('Land at '); await ctx.send ({random.choice(location)})
-    #await ctx.send('\nYou can only use '); await ctx.send({random.choice(weapon)})
+    await ctx.send('Land at '); await ctx.send (random.choice(location))
+    await ctx.send('\nYou can only use '); await ctx.send(random.choice(weapon))
 
 @client.command()
 async def pi(ctx):
@@ -108,7 +116,7 @@ async def pi(ctx):
 async def roulette(ctx):
     """Good ol' Russian Roulette"""
     outcomes=['Death','Coma','Lost Limbs','Winner']
-    await ctx.send({random.choice(outcomes)})
+    await ctx.send(random.choice(outcomes))
            
 @client.command()
 async def ping(ctx):
@@ -128,7 +136,7 @@ async def purge(ctx, amount=500000000000000000000000000000000000000000000000):
     if textts == False:
         await ctx.send ('Channel purged. (use the command ez-tts to turn on voice notifications for this event)')
     elif textts == True:
-        await ctx.send ('/tts Channel purged.')
+        await ctx.send ('Channel purged.',tts=True)
     else:
         await ctx.send ('Error code 2 (See readme for details)')
 
