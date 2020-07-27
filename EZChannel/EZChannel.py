@@ -28,7 +28,7 @@ async def on_ready():
 async def on_guild_join(guild): #Thanks to the GitHub user 0xicl33n for this code!
     for channel in guild.text_channels:
         if channel.permissions_for(guild.me).send_messages:
-            await channel.send('Hey there! this is the message i send when i join a server')
+            await channel.send('Hey there! For a list of commands please type ez-help. \nPlease remember that this bot is a work in progress and some commands may not work properly yet! \nTo enable Text-to-Speech mode type ez-tts')
         break 
 
 
@@ -47,12 +47,19 @@ async def Register(ctx):
 @client.command()
 async def code(ctx):
     """Shows a Github link to code"""
-    await ctx.send ('https://github.com/KeltontheConqueror/EZChannel')
+    
+    global textts
+    if textts == True:
+        await ctx.send('I am coded by Kelton the Conqueror. Here is his GitHub!', tts=True)
+        await ctx.send ('https://github.com/KeltontheConqueror/')
+    else:   
+        await ctx.send('I am coded by Kelton the Conqueror. Here is his GitHub!')
+        await ctx.send ('https://github.com/KeltontheConqueror/')
 
 @client.command() 
 async def tts(ctx):
     """Makes bot respond with text-to-speech messages"""
-    print ("working")
+    print ("TTS On")
     global textts
     if textts == False:
         textts = True
@@ -102,8 +109,8 @@ async def consoleping(ctx):
 async def fortniteroulette(ctx):
     """Gives a random drop spot and weapon"""
 
-    location = ['PLEASENT_PARK','STEAMY_STACKS','SWEATY_SANDS','SALTY_SPRINGS','THE_AUTHORITY','FRENZY_FARM','HOLLY_HEDGES','LAZY_LAKE','RETAIL_ROW','THE_YACHT','THE_FORTILLA','RICKETY_RIG','MISTY_MEADOWS','CATTY_CORNER','A_RANDOM_HOUSE_IN_THE_MIDDLE_OF_NOWHERE']
-    weapon = ['AR','SHOTGUN','SMG','SNIPER','HARPOON','PISTOL','Pickaxe_Only']
+    location = ['Pleasent_Park','Steamy_Stacks','Sweaty_Sands','Salty_Springs','The_Authority','Frenzy_Farm','Holly_Hedges','Lazy_Lake','Retail_Row','The_Yacht','The_Fortilla','Rickety_Rig','Misty_Meadows','Catty_Corner','A_Random_House_In_The_Middle_Of_Nowhere']
+    weapon = ['AR','Shotgun','SMG','Sniper','Harpoon','Pistol','Pickaxe_Only']
     await ctx.send('Land at '); await ctx.send (random.choice(location))
     await ctx.send('\nYou can only use '); await ctx.send(random.choice(weapon))
 
