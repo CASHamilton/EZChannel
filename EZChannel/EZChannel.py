@@ -34,6 +34,7 @@ async def on_guild_join(guild): #Thanks to the GitHub user 0xicl33n for this cod
 
 @client.command()
 async def Register(ctx):
+    """Work in progress"""
     author = ctx.message.author
     print (author)
 
